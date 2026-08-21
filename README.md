@@ -90,3 +90,22 @@ my-nextjs-app/
 ### 3. Server vs. Client Components
 * **Server Components (Default)**: All components in the `app/` folder are React Server Components by default. They fetch data securely on the server and reduce client-side JavaScript bundles.
 * **Client Components**: Add the `'use use-client'` directive at the very top of a file whenever you use interactivity (e.g., `useState`, `useEffect`, or click listeners).
+
+---
+
+## Things to take note on
+
+### C7 - Fetching Data
+
+1. Request waterfall data - Prevent by parallel data fetching using Promise.all()
+2. However, it got disadvantage if one data is slower than others.
+
+### C8 - Static vs Dynamic Rendering
+
+1. Each got pros and cons. Static(Faster web, reduced server load) | Dynamic(Real time data, request time info like URL search params and cookies)
+2. Thus, from previous chapter using dyanamic rendering, app is only as fast as the slowest data fetch
+
+### C9 - Streaming
+
+1. Usage of **chunking** by breaking fetch data pages with suspense and loading/fallback pages to previous previous chapter issue.
+2. Good practices - Granular suspense boundaries by fetching data to the specific components that needed. Which allows one to stream each compoennts prevents UI from blocking all.
